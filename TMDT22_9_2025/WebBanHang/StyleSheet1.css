@@ -1,0 +1,146 @@
+﻿/* Thiết lập cơ bản */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Background chung cho toàn bộ trang */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* === HEADER (LIST VÀ BANNER) === */
+header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Menu (list) nằm cùng 1 hàng */
+.list {
+    display: flex; /* Dùng Flexbox để xếp các mục nằm ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between; /* Đẩy logo và nav ra hai bên */
+    padding: 10px 20px;
+}
+
+    .list .logo {
+        width: 100px; /* Kích thước logo */
+        height: auto;
+    }
+
+nav ul {
+    list-style: none; /* Bỏ dấu chấm mặc định */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Xếp các mục li nằm ngang */
+    align-items: center;
+}
+
+    nav ul li {
+        padding: 0 15px;
+    }
+
+        nav ul li a {
+            font-weight: bold;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+            nav ul li a:hover {
+                color: #ff6600; /* Màu khi rê chuột */
+            }
+.banner_image {
+    width: 100%;
+    overflow: hidden; /* Đảm bảo hình ảnh không tràn */
+    height:150px;
+    border-top: 5px;
+}
+
+/* ==== MAIN layout: aside cố định, phần còn lại là content */
+/* Use CSS Grid so "phần còn lại" (the remaining area) automatically becomes the content area */
+main {
+    display: grid;
+    grid-template-columns: 200px 1fr; /* aside width + remaining content */
+    grid-template-rows: auto 1fr; /* breadcrumb (top) + main content */
+    gap: 0;
+    min-height: 60vh; /* adjust as needed; avoid fixed large heights */
+    background-color: #fff; /* neutral background for main area */
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Left column: aside occupies both rows (full height of main) */
+aside {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    background-color: aqua;
+    width: 100%; /* width of grid column */
+    box-sizing: border-box;
+    padding: 16px;
+    overflow: auto;
+}
+
+/* Breadcrumb on the top-right area */
+.breadcrum {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background-color: palegreen;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+}
+
+/* Main content fills the rest of the right column below breadcrumb */
+.content {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background-color: darkred;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 20px;
+    overflow: auto;
+    /* optional visuals */
+    background-color: transparent;
+}
+
+/* === FOOTER === */
+footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    min-height: 100px;
+    box-sizing: border-box;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr; /* stack on small screens */
+        grid-template-rows: auto auto 1fr; /* aside, breadcrumb, content stacked */
+    }
+    aside {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+        width: 100%;
+    }
+    .breadcrum {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+        height: auto;
+    }
+    .content {
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+    }
+}
