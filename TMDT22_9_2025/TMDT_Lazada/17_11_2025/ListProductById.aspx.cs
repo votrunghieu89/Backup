@@ -11,7 +11,8 @@ namespace TMDT22_9_2025.TMDT_Lazada._17_11_2025
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
-        private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\TMDT22_9_2025\TMDT22_9_2025\App_Data\Database1.mdf;Integrated Security=True";
+      //  private readonly string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\TMDT22_9_2025\TMDT22_9_2025\App_Data\Database1.mdf;Integrated Security=True";
+        private readonly Connection connection1 = new Connection();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(IsPostBack) return;
@@ -20,28 +21,22 @@ namespace TMDT22_9_2025.TMDT_Lazada._17_11_2025
                 {
                     string maLoaiHang = Request.QueryString["maLoaiHang"];
                     if (maLoaiHang == null) return;
-                    using (var connection = new System.Data.SqlClient.SqlConnection(connectionString))
-                    {
-                        connection.Open();
-                        string query = @"SELECT maHangHoa, TenHangHoa, Gia, maLoaiHang,SoLuongTon, HinhAnh from HangHoa WHERE maLoaiHang = @maLoaiHang";
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@maLoaiHang", maLoaiHang);
-
-                            SqlDataAdapter adapter = new SqlDataAdapter(command);
-                            DataTable dt = new DataTable();
-                            adapter.Fill(dt);
-
-                            dlProduct.DataSource = dt;
-                            dlProduct.DataBind();
-                        }
-                    }
+                    string query = @"SELECT maHangHoa, TenHangHoa, Gia, maLoaiHang, SoLuongTon, HinhAnh 
+                     FROM HangHoa 
+                     WHERE maLoaiHang = @maLoaiHang";
+                     var parameters = new List<SqlParameter>()
+                     {
+                            new SqlParameter("@maLoaiHang", maLoaiHang)
+                     };
+                    DataTable dt = connection1.getDataParameter(query, parameters);
+                    dlProduct.DataSource = dt;
+                    dlProduct.DataBind();
                 }
                 catch (Exception ex)
                 {
-                    // Ghi log hoặc hiển thị lỗi
                     Response.Write($"<script>alert('Lỗi: {ex.Message}');</script>");
                 }
+
             }
         }
     }

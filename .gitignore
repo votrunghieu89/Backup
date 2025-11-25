@@ -1,0 +1,19 @@
+# Ignore Visual Studio
+.vs/
+*.vscode/
+
+# Build outputs
+bin/
+obj/
+Debug/
+Release/
+
+# User-specific files
+*.user
+*.suo
+*.cache
+*.log
+
+# NuGet
+*.nupkg
+packages/

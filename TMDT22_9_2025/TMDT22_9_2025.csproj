@@ -199,6 +199,8 @@
     <Content Include="TMDT_Lazada\17_11_2025\Home.aspx" />
     <Content Include="TMDT_Lazada\17_11_2025\Product.aspx" />
     <Content Include="TMDT_Lazada\17_11_2025\ListProductById.aspx" />
+    <Content Include="TMDT_Lazada\17_11_2025\ProductDetail.aspx" />
+    <Content Include="TMDT_Lazada\Image\ckeditor_3370949.jpg" />
     <Content Include="TMDT_Lazada\Image\img1.jpg" />
     <Content Include="TMDT_Lazada\Image\img2.png" />
     <Content Include="TMDT_Lazada\Image\R-removebg-preview.png" />
@@ -226,12 +228,22 @@
     <Compile Include="TestDb\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TMDT_Lazada\17_11_2025\Connection.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="TMDT_Lazada\17_11_2025\Product.aspx.cs">
       <DependentUpon>Product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="TMDT_Lazada\17_11_2025\Product.aspx.designer.cs">
       <DependentUpon>Product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TMDT_Lazada\17_11_2025\ProductDetail.aspx.cs">
+      <DependentUpon>ProductDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TMDT_Lazada\17_11_2025\ProductDetail.aspx.designer.cs">
+      <DependentUpon>ProductDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="TMDT_Lazada\17_11_2025\Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>

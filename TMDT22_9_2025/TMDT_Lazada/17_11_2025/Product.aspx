@@ -22,11 +22,11 @@
        <asp:DataList ID="dlProduct" runat="server" RepeatColumns="8" RepeatDirection="Horizontal" CellPadding="10">
         <ItemTemplate>
             <div class="product_card" style="border:1px solid #ccc; padding:10px; text-align:center; margin-bottom:10px;">
-                <asp:Image ID="imgProduct" runat="server"  ImageUrl='<%# "~/TMDT_Lazada/Image/" + Eval("HinhAnh") %>'  Width="150px" Height="150px" />
-                <h4><%# Eval("TenHangHoa") %></h4>
-                <p>Giá: <%# Eval("Gia", "{0:N0}") %> VNĐ</p>
-                <p>Số lượng: <%# Eval("SoLuongTon") %></p>
-                <asp:HyperLink ID="lnkDetail" runat="server" NavigateUrl='<%# Eval("maHangHoa", "ProductDetail.aspx?id={0}") %>' Text="Xem chi tiết"></asp:HyperLink>
+                <asp:HyperLink ID="lnkProduct" runat="server"  NavigateUrl='<%# "ProductDetail.aspx?maHangHoa=" + Eval("maHangHoa") %>'  style="text-decoration:none; color:black;" >
+                     <asp:Image ID="imgProduct" runat="server" ImageUrl='<%# "~/TMDT_Lazada/Image/" + Eval("HinhAnh") %>' Width="150px" Height="150px" />
+                     <h4><%# Eval("TenHangHoa") %></h4>
+                     <p>Giá: <%# Eval("Gia", "{0:N0}") %> VNĐ</p>
+                  </asp:HyperLink>
             </div>
         </ItemTemplate>
     </asp:DataList>
