@@ -69,13 +69,13 @@ namespace TMDT22_9_2025.TMDT_Lazada
         protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
 
         /// <summary>
-        /// HyperLink4 control.
+        /// lnkShowForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
+        protected global::System.Web.UI.WebControls.LinkButton lnkShowForm;
 
         /// <summary>
         /// HyperLink5 control.
@@ -94,6 +94,15 @@ namespace TMDT22_9_2025.TMDT_Lazada
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink6;
+
+        /// <summary>
+        /// HyperLink7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink7;
 
         /// <summary>
         /// Image2 control.
@@ -121,5 +130,14 @@ namespace TMDT22_9_2025.TMDT_Lazada
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+
+        /// <summary>
+        /// CreateProductForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::TMDT22_9_2025.TMDT_Lazada._17_11_2025.CreateProduct1 CreateProductForm;
     }
 }

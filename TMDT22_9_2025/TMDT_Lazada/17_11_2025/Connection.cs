@@ -87,5 +87,22 @@ namespace TMDT22_9_2025.TMDT_Lazada._17_11_2025
                 CloseConnection();
             }
         }
+
+        public int CUD(string query, Dictionary<string, object> parameters = null)
+        {
+            try
+            {
+                OpenConnection();
+                SqlCommand command = new SqlCommand(query, connection);
+                if (parameters != null)
+                {
+                    foreach (var param in parameters)
+                        command.Parameters.AddWithValue(param.Key, param.Value ?? DBNull.Value);
+                }
+                return command.ExecuteNonQuery();
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+            finally { CloseConnection(); }
+        }
     }
 }

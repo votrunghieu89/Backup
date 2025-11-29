@@ -196,6 +196,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\test.jpg" />
     <Content Include="TestDb\WebForm1.aspx" />
+    <Content Include="TMDT_Lazada\17_11_2025\CreateProduct.ascx" />
     <Content Include="TMDT_Lazada\17_11_2025\Home.aspx" />
     <Content Include="TMDT_Lazada\17_11_2025\Product.aspx" />
     <Content Include="TMDT_Lazada\17_11_2025\ListProductById.aspx" />
@@ -230,6 +231,13 @@
     </Compile>
     <Compile Include="TMDT_Lazada\17_11_2025\Connection.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TMDT_Lazada\17_11_2025\CreateProduct.ascx.cs">
+      <DependentUpon>CreateProduct.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TMDT_Lazada\17_11_2025\CreateProduct.ascx.designer.cs">
+      <DependentUpon>CreateProduct.ascx</DependentUpon>
     </Compile>
     <Compile Include="TMDT_Lazada\17_11_2025\Product.aspx.cs">
       <DependentUpon>Product.aspx</DependentUpon>

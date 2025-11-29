@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="TMDT22_9_2025.TMDT_Lazada.Site1" %>
-
+<%@ Register TagPrefix="uc1" TagName="CreateProduct" Src="~/TMDT_Lazada\17_11_2025\CreateProduct.ascx" %>
 <!DOCTYPE html>
 
 <html>
@@ -200,9 +200,14 @@
                     <ul>
                         <li><asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/TMDT_Lazada/17_11_2025/Home.aspx">Home</asp:HyperLink></li>
                         <li><asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/TMDT_Lazada/17_11_2025/Product.aspx">Don Hang</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/MaHang.aspx">Ma Hang</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/LoaiHang.aspx">Loai Hang</asp:HyperLink></li>
-                        <li><asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/KhachHang.aspx">Khach Hang</asp:HyperLink></li>
+                      <li>
+                            <asp:LinkButton ID="lnkShowForm" runat="server" OnClientClick="showForm(); return false;">
+                                Tạo sản phẩm
+                            </asp:LinkButton>
+                        </li>
+                        <li><asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/MaHang.aspx">Ma Hang</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/LoaiHang.aspx">Loai Hang</asp:HyperLink></li>
+                        <li><asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/KhachHang.aspx">Khach Hang</asp:HyperLink></li>
                     </ul>
                 </nav>
             </header>
@@ -244,6 +249,7 @@
             </footer>
 
         </div>
+          <uc1:CreateProduct ID="CreateProductForm" runat="server" />
     </form>
 </body>
 </html>

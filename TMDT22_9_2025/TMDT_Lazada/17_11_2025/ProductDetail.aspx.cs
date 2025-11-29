@@ -40,5 +40,20 @@ namespace TMDT22_9_2025.TMDT_Lazada._17_11_2025
                 }
             }
         }
+
+        protected void dlProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            // Xử lý sửa sản phẩm
+            Response.Write("Bạn vừa click Sửa!");
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
