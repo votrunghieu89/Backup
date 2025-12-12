@@ -1,0 +1,156 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="OnTapTMDT.Site1" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Layout tổng */
+        .main {
+            display: flex;
+            width: 100%;
+            max-width: 1300px;
+            margin: 20px auto;
+            border: 1px solid black;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 20%;
+            padding: 10px;
+            border-right: 1px solid black;
+        }
+
+        .sidebar-item {
+            margin-bottom: 8px;
+        }
+        .sidebar-item a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 6px 8px;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+        .sidebar-item a:hover {
+            background: #e8f3ff;
+        }
+        .active-category a {
+            background: #cce5ff;
+            font-weight: bold;
+        }
+
+        /* Content (DANH SÁCH SẢN PHẨM) */
+        .content {
+            width: 55% !important;
+            padding: 10px;
+            border-right: 1px solid black;
+        }
+
+        /* Login */
+/*        .login_container {
+            width: 25%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }*/
+
+        .login_form {
+            padding: 20px;
+            min-width: 250px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column
+        }
+        .save_pass {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0 15px;
+}
+
+/* TextBox căn full chiều ngang và có padding đẹp */
+.login_form input[type="text"],
+.login_form input[type="password"] {
+    width: 92%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+
+/* Button đẹp hơn */
+#Btn_Login {
+    padding: 10px 0;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+#Btn_Login:hover {
+    background: #0056b3;
+}
+    </style>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="main">
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h3>Danh mục Loại</h3>
+                <asp:DataList ID="DataList1" runat="server" RepeatDirection="Vertical">
+                    <ItemTemplate>
+                        <div class='<%#
+                                (Request.QueryString["MaDM"] != null &&
+                                Request.QueryString["MaDM"].ToString() == Eval("MaDM").ToString())
+                                ? "sidebar-item active-category"
+                                : "sidebar-item"
+                            %>'>
+                            <asp:HyperLink ID="HyperLink1" runat="server"
+                                Text='<%# Eval("TenDM") %>'
+                                NavigateUrl='<%# "ListProductById.aspx?MaDM=" + Eval("MaDM") %>'></asp:HyperLink>
+                        </div>
+                    </ItemTemplate>
+                </asp:DataList>
+            </div>
+
+            <!-- Nội dung -->
+            <div class="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            </div>
+
+            <!-- Login -->
+            <div class="login_container">
+                <div class="login_form">
+                    <h3 style="text-align:center">Thông tin đăng nhập</h3>
+
+                    <asp:Label ID="Label_TenDN" runat="server" Text="Tên đăng nhập:"></asp:Label>
+                    <asp:TextBox ID="Txt_TenDN" runat="server"></asp:TextBox>
+                    <asp:Label ID="Label_MatKhau" runat="server" Text="Mật khẩu:"></asp:Label>
+                    <asp:TextBox ID="Txt_MatKhau" runat="server" TextMode="Password"></asp:TextBox>
+                   <div class="save_pass">
+                         <asp:CheckBox ID="Chk_GhiNho" runat="server" />
+                         <label for="Chk_GhiNho">Ghi nhớ mật khẩu</label>
+                   </div>
+
+                    <asp:Button ID="Btn_Login" runat="server" Text="Đăng nhập" OnClick="Btn_Login_Click" />
+                </div>
+            </div>
+
+        </div>
+    </form>
+</body>
+</html>

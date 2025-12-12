@@ -1,0 +1,68 @@
+﻿-- 1. Create table DanhMucHoa (Category)
+Create table DanhMucHoa(
+	MaDM int identity(1,1) primary key,
+	TenDM nvarchar(255) not null,
+	MoTa nvarchar(max) -- Đã sửa MaTa thành MoTa theo ERD
+)
+
+---
+
+-- 2. Create table Hoa (Product)
+Create table Hoa (
+	MaHoa int identity(1,1) primary key,
+	TenHoa nvarchar(255) not null,
+	DonViTinh varchar(20),
+	DonGia decimal(18,2), -- Đã tăng kích thước để chứa giá trị lớn hơn
+	HinhAnh varchar(max),
+	MoTa nvarchar(max),
+	MaDM int,
+	Foreign key (MaDM) references DanhMucHoa(MaDM)
+)
+
+---
+
+-- 3. Create table KhachHang (Customer)
+Create table KhachHang(
+	TenDN varchar(255) primary key,
+	MatKhau varchar(255),
+	TenKhachHang nvarchar(255)
+)
+
+---
+
+-- 4. Create table DonHang (Order Details)
+Create table DonHang(
+	TenDN varchar(255),
+	MaHoa int,
+	SoLuong int,
+	primary key(TenDN, MaHoa),
+	Foreign key (TenDN) references KhachHang(TenDN),
+	Foreign key (MaHoa) references Hoa(MaHoa) -- Đã sửa: Phải tham chiếu đến bảng Hoa
+)
+
+INSERT INTO DanhMucHoa (TenDM, MoTa) VALUES 
+('Hoa Hồng', N'Các loại hoa thuộc chi Rosa'),
+('Hoa Lan', N'Các loại hoa thuộc họ Orchidaceae'),
+('Hoa Cẩm Tú Cầu', N'Các loại hoa thuộc chi Hydrangea'),
+('Hoa Hướng Dương', N'Các loại hoa thuộc chi Helianthus');
+
+INSERT INTO Hoa (TenHoa, DonViTinh, DonGia, HinhAnh, MoTa, MaDM) VALUES
+(N'Hồng Đỏ Nhung', 'Bó', 150000.00, 'hongdo.jpg', N'Biểu tượng của tình yêu nồng cháy', 1),
+(N'Lan Hồ Điệp Trắng', 'Chậu', 850000.00, 'lanhodieptrang.jpg', N'Thanh lịch và sang trọng', 2),
+(N'Cẩm Tú Cầu Xanh', 'Cành', 75000.00, 'camtucauxanh.jpg', N'Sự biết ơn và chân thành', 3),
+(N'Hướng Dương Vàng', 'Bó', 120000.00, 'huongduong.jpg', N'Niềm tin và hy vọng', 4),
+(N'Hồng Vàng', 'Bó', 140000.00, 'hongvang.jpg', N'Tình bạn và niềm vui', 1),
+(N'Lan Dendro Tím', 'Chậu', 550000.00, 'landendrotim.jpg', N'Sự quý phái và lãng mạn', 2),
+(N'Cẩm Tú Cầu Trắng', 'Cành', 65000.00, 'camtucautrang.jpg', N'Sự thuần khiết và khởi đầu mới', 3);
+
+INSERT INTO KhachHang (TenDN, MatKhau, TenKhachHang) VALUES
+('khachhang1', 'pass123', N'Nguyễn Văn A'),
+('khachhang2', 'pass456', N'Trần Thị B'),
+('khachhang3', 'pass789', N'Lê Văn C');
+
+INSERT INTO DonHang (TenDN, MaHoa, SoLuong) VALUES
+('khachhang1', 1, 2), -- khachhang1 mua 2 Bó Hồng Đỏ Nhung (MaHoa=1)
+('khachhang1', 4, 1), -- khachhang1 mua 1 Bó Hướng Dương Vàng (MaHoa=4)
+('khachhang2', 2, 1), -- khachhang2 mua 1 Chậu Lan Hồ Điệp Trắng (MaHoa=2)
+('khachhang3', 5, 3), -- khachhang3 mua 3 Bó Hồng Vàng (MaHoa=5)
+('khachhang3', 7, 5); -- khachhang3 mua 5 Cành Cẩm Tú Cầu Trắng (MaHoa=7)
